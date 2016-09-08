@@ -48,12 +48,33 @@ public class Mixto {
         this.denominador = denominador;
     }
     
-    public Mixto suma(Mixto m2, Mixto ent1){
+    public Mixto suma(Mixto m2) throws DenominadorCeroException{
         int ent, num, den;
         Mixto m;
-        num = ((this.entero * this.denominador) + this.numerador) + ((this.entero * m2.denominador) + m2.numerador);
-        den = this.denominador * m2.denominador;   
-        m = new Mixto(num, den);
+        num = this.numerador + m2.numerador;
+        den = this.denominador * m2.denominador;
+        ent = this.entero + m2.entero;
+        m = new Mixto(num, den, ent);
+        return m;
+    }
+    
+    public Mixto resta(Mixto m2) throws DenominadorCeroException{
+        int ent, num, den;
+        Mixto m;
+        num = this.entero * this.denominador + this.numerador - m2.entero * m2.denominador + m2.numerador;
+        den = this.denominador * m2.denominador;
+        ent = num / den;
+        m = new Mixto(ent, num, den);
+        return m;
+    }
+    
+    public Mixto multiplicacion(Mixto m2) throws DenominadorCeroException{
+        int ent, num, den;
+        Mixto m;
+        num = this.entero * this.denominador + this.numerador * m2.entero * m2.denominador + m2.numerador;
+        den = this.denominador * m2.denominador;
+        ent = num / den;
+        m = new Mixto(ent, num, den);
         return m;
     }
     
