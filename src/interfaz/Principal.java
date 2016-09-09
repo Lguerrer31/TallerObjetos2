@@ -70,6 +70,11 @@ public class Principal extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtDenominador1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        txtDenominador1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDenominador1KeyTyped(evt);
+            }
+        });
         jPanel1.add(txtDenominador1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 40, -1));
 
         txtDenominador4.setEditable(false);
@@ -81,15 +86,35 @@ public class Principal extends javax.swing.JFrame {
         jPanel1.add(cmbOperciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, 70, -1));
 
         txtEntero1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        txtEntero1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtEntero1KeyTyped(evt);
+            }
+        });
         jPanel1.add(txtEntero1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 40, -1));
 
         txtEntero2.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        txtEntero2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtEntero2KeyTyped(evt);
+            }
+        });
         jPanel1.add(txtEntero2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 40, -1));
 
         txtNumerador2.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        txtNumerador2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNumerador2KeyTyped(evt);
+            }
+        });
         jPanel1.add(txtNumerador2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, 40, -1));
 
         txtDenominador2.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        txtDenominador2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDenominador2KeyTyped(evt);
+            }
+        });
         jPanel1.add(txtDenominador2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, 40, -1));
 
         txtDenominador3.setEditable(false);
@@ -104,6 +129,11 @@ public class Principal extends javax.swing.JFrame {
         jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 40, -1));
 
         txtNumerador1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        txtNumerador1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNumerador1KeyTyped(evt);
+            }
+        });
         jPanel1.add(txtNumerador1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 40, -1));
 
         txtNumeraor4.setEditable(false);
@@ -122,6 +152,11 @@ public class Principal extends javax.swing.JFrame {
 
         cmdConvertir.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         cmdConvertir.setText("Convertir a fraccionario");
+        cmdConvertir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdConvertirActionPerformed(evt);
+            }
+        });
         jPanel1.add(cmdConvertir, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, -1, -1));
 
         cmdResolver.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
@@ -175,7 +210,7 @@ public class Principal extends javax.swing.JFrame {
 
             switch (op) {
                 case 0:
-                    m3 = m3.suma(m2);
+                    m3 = m.suma(m2);
                     break;
                 case 1:
                     m3 = m.resta(m2);
@@ -183,6 +218,8 @@ public class Principal extends javax.swing.JFrame {
                 case 2:
                     m3 = m.multiplicacion(m2);
                     break;
+                case 3:
+                    m3 = m.division(m2);
             }
 
         } catch (DenominadorCeroException ex) {
@@ -208,12 +245,14 @@ public class Principal extends javax.swing.JFrame {
         txtDenominador1.setText("");
         txtDenominador2.setText("");
         txtDenominador3.setText("");
+        txtDenominador4.setText("");
         txtEntero1.setText("");
         txtEntero2.setText("");
         txtEntero3.setText("");
         txtNumerador1.setText("");
         txtNumerador2.setText("");
         txtNumerador3.setText("");
+        txtNumeraor4.setText("");
         cmbOperciones.setSelectedIndex(0);
         txtEntero1.setEditable(true);
         txtEntero2.setEditable(true);
@@ -225,6 +264,87 @@ public class Principal extends javax.swing.JFrame {
         txtEntero1.requestFocusInWindow();
 
     }//GEN-LAST:event_cmdLimpiarActionPerformed
+
+    private void cmdConvertirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdConvertirActionPerformed
+        // TODO add your handling code here:
+        int num, den, num4, den4, ent;
+
+        num = Integer.parseInt(txtNumerador3.getText());
+        den = Integer.parseInt(txtDenominador3.getText());
+        ent = Integer.parseInt(txtEntero3.getText());
+
+        num4 = (ent * den) + num;
+        den4 = den;
+
+        txtNumeraor4.setText("" + num4);
+        txtDenominador4.setText("" + den4);
+    }//GEN-LAST:event_cmdConvertirActionPerformed
+
+    private void txtEntero1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEntero1KeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c)) {
+            getToolkit().beep();
+
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtEntero1KeyTyped
+
+    private void txtNumerador1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumerador1KeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c)) {
+            getToolkit().beep();
+
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNumerador1KeyTyped
+
+    private void txtDenominador1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDenominador1KeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c)) {
+            getToolkit().beep();
+
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtDenominador1KeyTyped
+
+    private void txtEntero2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEntero2KeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c)) {
+            getToolkit().beep();
+
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtEntero2KeyTyped
+
+    private void txtNumerador2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumerador2KeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c)) {
+            getToolkit().beep();
+
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNumerador2KeyTyped
+
+    private void txtDenominador2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDenominador2KeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c)) {
+            getToolkit().beep();
+
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtDenominador2KeyTyped
 
     /**
      * @param args the command line arguments
