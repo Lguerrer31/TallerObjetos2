@@ -54,14 +54,14 @@ public class Mixto {
         num = this.numerador + m2.numerador;
         den = this.denominador * m2.denominador;
         ent = this.entero + m2.entero;
-        m = new Mixto(num, den, ent);
+        m = new Mixto(ent, num, den);
         return m;
     }
     
     public Mixto resta(Mixto m2) throws DenominadorCeroException{
         int ent, num, den;
         Mixto m;
-        num = this.entero * this.denominador + this.numerador - m2.entero * m2.denominador + m2.numerador;
+        num = (this.entero * this.denominador + this.numerador) - (m2.entero * m2.denominador + m2.numerador);
         den = this.denominador * m2.denominador;
         ent = num / den;
         m = new Mixto(ent, num, den);
@@ -71,7 +71,7 @@ public class Mixto {
     public Mixto multiplicacion(Mixto m2) throws DenominadorCeroException{
         int ent, num, den;
         Mixto m;
-        num = this.entero * this.denominador + this.numerador * m2.entero * m2.denominador + m2.numerador;
+        num = (this.entero * this.denominador + this.numerador) * (m2.entero * m2.denominador + m2.numerador);
         den = this.denominador * m2.denominador;
         ent = num / den;
         m = new Mixto(ent, num, den);
