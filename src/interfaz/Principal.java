@@ -197,47 +197,68 @@ public class Principal extends javax.swing.JFrame {
         Mixto m, m2, m3 = null;
         int op = cmbOperciones.getSelectedIndex();
 
-        num1 = Integer.parseInt(txtNumerador1.getText());
-        num2 = Integer.parseInt(txtNumerador2.getText());
-        den1 = Integer.parseInt(txtDenominador1.getText());
-        den2 = Integer.parseInt(txtDenominador2.getText());
-        ent1 = Integer.parseInt(txtEntero1.getText());
-        ent2 = Integer.parseInt(txtEntero2.getText());
+        if (txtEntero1.getText().trim().isEmpty()) {
+            Helper.mensaje(null, "Por favor digite los datos correctamente", "Error", 2);
+            txtEntero1.requestFocusInWindow();
+        } else if (txtEntero2.getText().trim().isEmpty()) {
+            Helper.mensaje(null, "Por favor digite los datos correctamente", "Error", 2);
+            txtEntero2.requestFocusInWindow();
+        } else if (txtNumerador1.getText().trim().isEmpty()) {
+            Helper.mensaje(null, "Por favor digite los datos correctamente", "Error", 2);
+            txtNumerador1.requestFocusInWindow();
+        } else if (txtNumerador2.getText().trim().isEmpty()) {
+            Helper.mensaje(null, "Por favor digite los datos correctamente", "Error", 2);
+            txtNumerador2.requestFocusInWindow();
+        } else if (txtDenominador1.getText().trim().isEmpty()) {
+            Helper.mensaje(null, "Por favor digite los datos correctamente", "Error", 2);
+            txtDenominador1.requestFocusInWindow();
+        } else if (txtDenominador2.getText().trim().isEmpty()) {
+            Helper.mensaje(null, "Por favor digite los datos correctamente", "Error", 2);
+            txtDenominador2.requestFocusInWindow();
+        } else {
 
-        try {
-            m = new Mixto(ent1, num1, den1);
-            m2 = new Mixto(ent2, num2, den2);
+            num1 = Integer.parseInt(txtNumerador1.getText());
+            num2 = Integer.parseInt(txtNumerador2.getText());
+            den1 = Integer.parseInt(txtDenominador1.getText());
+            den2 = Integer.parseInt(txtDenominador2.getText());
+            ent1 = Integer.parseInt(txtEntero1.getText());
+            ent2 = Integer.parseInt(txtEntero2.getText());
 
-            switch (op) {
-                case 0:
-                    m3 = m.suma(m2);
-                    break;
-                case 1:
-                    m3 = m.resta(m2);
-                    break;
-                case 2:
-                    m3 = m.multiplicacion(m2);
-                    break;
-                case 3:
-                    m3 = m.division(m2);
+            try {
+                m = new Mixto(ent1, num1, den1);
+                m2 = new Mixto(ent2, num2, den2);
+
+                switch (op) {
+                    case 0:
+                        m3 = m.suma(m2);
+                        break;
+                    case 1:
+                        m3 = m.resta(m2);
+                        break;
+                    case 2:
+                        m3 = m.multiplicacion(m2);
+                        break;
+                    case 3:
+                        m3 = m.division(m2);
+                }
+
+            } catch (DenominadorCeroException ex) {
+                Helper.mensaje(null, "No puede digitar ceros en el denominador", "Error", 2);
             }
 
-        } catch (DenominadorCeroException ex) {
-            Helper.mensaje(null, "No puede digitar ceros en el denominador", "Error", 2);
+            txtEntero3.setText("" + m3.getEntero());
+            txtNumerador3.setText("" + m3.getNumerador());
+            txtDenominador3.setText("" + m3.getDenominador());
+
+            txtEntero1.setEditable(false);
+            txtEntero2.setEditable(false);
+            txtNumerador1.setEditable(false);
+            txtNumerador2.setEditable(false);
+            txtDenominador1.setEditable(false);
+            txtDenominador2.setEditable(false);
+            cmdResolver.setEnabled(false);
+            cmdConvertir.setEnabled(true);
         }
-
-        txtEntero3.setText("" + m3.getEntero());
-        txtNumerador3.setText("" + m3.getNumerador());
-        txtDenominador3.setText("" + m3.getDenominador());
-
-        txtEntero1.setEditable(false);
-        txtEntero2.setEditable(false);
-        txtNumerador1.setEditable(false);
-        txtNumerador2.setEditable(false);
-        txtDenominador1.setEditable(false);
-        txtDenominador2.setEditable(false);
-        cmdResolver.setEnabled(false);
-        cmdConvertir.setEnabled(true);
     }//GEN-LAST:event_cmdResolverActionPerformed
 
     private void cmdLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLimpiarActionPerformed
