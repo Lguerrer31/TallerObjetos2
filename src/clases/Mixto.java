@@ -90,4 +90,13 @@ public class Mixto {
         return m;
     }
     
+    public Mixto fraccionario() throws DenominadorCeroException{
+        int num4, den4, ent = 0;
+        Mixto m3;
+        num4 = (this.getEntero() * this.getDenominador()) + this.getNumerador();
+        den4 = this.getDenominador();
+        m3 = new Mixto(ent, num4, den4);
+        return m3;
+    }
+    
 }

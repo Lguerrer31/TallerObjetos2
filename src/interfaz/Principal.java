@@ -288,17 +288,16 @@ public class Principal extends javax.swing.JFrame {
 
     private void cmdConvertirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdConvertirActionPerformed
         // TODO add your handling code here:
-        int num, den, num4, den4, ent;
-
+        int sw = 0;
+        int num, den, ent;
+        Mixto m3 = null;
+        
         num = Integer.parseInt(txtNumerador3.getText());
         den = Integer.parseInt(txtDenominador3.getText());
         ent = Integer.parseInt(txtEntero3.getText());
 
-        num4 = (ent * den) + num;
-        den4 = den;
-
-        txtNumeraor4.setText("" + num4);
-        txtDenominador4.setText("" + den4);
+        txtNumeraor4.setText("" + m3.getNumerador());
+        txtDenominador4.setText("" + m3.getDenominador());
     }//GEN-LAST:event_cmdConvertirActionPerformed
 
     private void txtEntero1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEntero1KeyTyped
